@@ -52,9 +52,10 @@
                         };
                     }
 
-                    // #ed5151|#149ece|#a7c636|#9e559c|#fc921f|#ffde3e
+                    // Candy Shop colour ramp from https://developers.arcgis.com/javascript/latest/esri-color-ramps/
                     const colors = ["#ed5151", "#149ece", "#a7c636", "#9e559c", "#fc921f", "#ffde3e"];
 
+                    // fill symbol and renderer created from https://developers.arcgis.com/javascript/latest/style-a-feature-layer/
                     const canadaRenderer = {
                         type: "unique-value",
                         field: "PRENAME",
@@ -68,17 +69,37 @@
                             createFillSymbol("Nova Scotia", colors[0]),
                             createFillSymbol("Nunavut", colors[1]),
                             createFillSymbol("Ontario", colors[5]),
-                            createFillSymbol("Prince Edward Island", colors[3]),
+                            createFillSymbol("Prince Edward Island", colors[2]),
                             createFillSymbol("Quebec", colors[4]),
                             createFillSymbol("Saskatchewan", colors[3]),
                             createFillSymbol("Yukon", colors[2])
                         ]
                     };
 
+                    const provinceLabels = {
+                        symbol: {
+                            type: "text",
+                            color: "#FFFFFF",
+                            haloColor: "#5E8D74",
+                            haloSize: "2px",
+                            font: {
+                                size: "12px",
+                                family: "Noto Sans",
+                                weight: "normal"
+                            }
+                        },
+                        labelPlacement: "center",
+                        labelExpressionInfo: {
+                            expression: "$feature.PRENAME"
+                        }
+                    };
+
                     // added Canada layer using https://developers.arcgis.com/javascript/latest/add-a-feature-layer/
                     const canadaLayer = new FeatureLayer({
                         url: "https://luna.flemingcollege.ca/arcgis/rest/services/Geom99lab2/ShminoCanada/MapServer/0",
-                        renderer: canadaRenderer
+                        renderer: canadaRenderer,
+                        opacity: 0.2,
+                        labelingInfo: [provinceLabels],
                     });
 
                     map.add(canadaLayer, 0);
