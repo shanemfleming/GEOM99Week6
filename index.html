@@ -36,9 +36,49 @@
                         container: "viewDiv" // Div element
                     });
 
+                    // fill symbol and renderer created from https://developers.arcgis.com/javascript/latest/style-a-feature-layer/
+                    function createFillSymbol(value, color) {
+                        return {
+                            "value": value,
+                            "symbol": {
+                                "color": color,
+                                "type": "simple-fill",
+                                "style": "solid",
+                                "outline": {
+                                    "style": "none"
+                                }
+                            },
+                            "label": value
+                        };
+                    }
+
+                    // #ed5151|#149ece|#a7c636|#9e559c|#fc921f|#ffde3e
+                    const colors = ["#ed5151", "#149ece", "#a7c636", "#9e559c", "#fc921f", "#ffde3e"];
+
+                    const canadaRenderer = {
+                        type: "unique-value",
+                        field: "PRENAME",
+                        uniqueValueInfos: [
+                            createFillSymbol("Alberta", colors[0]),
+                            createFillSymbol("British Columbia", colors[1]),
+                            createFillSymbol("Manitoba", colors[2]),
+                            createFillSymbol("New Brunswick", colors[3]),
+                            createFillSymbol("Newfoundland and Labrador", colors[4]),
+                            createFillSymbol("Northwest Territories", colors[5]),
+                            createFillSymbol("Nova Scotia", colors[0]),
+                            createFillSymbol("Nunavut", colors[1]),
+                            createFillSymbol("Ontario", colors[2]),
+                            createFillSymbol("Prince Edward Island", colors[3]),
+                            createFillSymbol("Quebec", colors[4]),
+                            createFillSymbol("Saskatchewan", colors[5]),
+                            createFillSymbol("Yukon", colors[2])
+                        ]
+                    };
+
                     // added Canada layer using https://developers.arcgis.com/javascript/latest/add-a-feature-layer/
                     const canadaLayer = new FeatureLayer({
-                        url: "https://luna.flemingcollege.ca/arcgis/rest/services/Geom99lab2/ShminoCanada/MapServer/0"
+                        url: "https://luna.flemingcollege.ca/arcgis/rest/services/Geom99lab2/ShminoCanada/MapServer/0",
+                        renderer: canadaRenderer
                     });
 
                     map.add(canadaLayer, 0);
