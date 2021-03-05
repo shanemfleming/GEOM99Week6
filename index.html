@@ -95,7 +95,7 @@
                         }
                     };
 
-                    const popupTrailheads = {
+                    const popupProvinces = {
                         "title": "PRENAME",
                         "content": "<b>French Name:</b> {PRFNAME}"
                     }
@@ -106,6 +106,7 @@
                         renderer: canadaRenderer,
                         opacity: 0.4,
                         labelingInfo: [provinceLabels],
+                        popupTemplate: popupProvinces,
                     });
 
                     map.add(canadaLayer, 0);
