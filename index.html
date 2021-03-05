@@ -36,7 +36,7 @@
                         container: "viewDiv" // Div element
                     });
 
-                    // fill symbol and renderer created from https://developers.arcgis.com/javascript/latest/style-a-feature-layer/
+                    // fill symbol created from https://developers.arcgis.com/javascript/latest/style-a-feature-layer/
                     function createFillSymbol(value, color) {
                         return {
                             "value": value,
@@ -55,7 +55,7 @@
                     // Candy Shop colour ramp from https://developers.arcgis.com/javascript/latest/esri-color-ramps/
                     const colors = ["#ed5151", "#149ece", "#a7c636", "#9e559c", "#fc921f", "#ffde3e"];
 
-                    // fill symbol and renderer created from https://developers.arcgis.com/javascript/latest/style-a-feature-layer/
+                    // renderer created from https://developers.arcgis.com/javascript/latest/style-a-feature-layer/
                     const canadaRenderer = {
                         type: "unique-value",
                         field: "PRENAME",
@@ -76,11 +76,12 @@
                         ]
                     };
 
+                    // labels created from https://developers.arcgis.com/javascript/latest/style-a-feature-layer/
                     const provinceLabels = {
                         symbol: {
                             type: "text",
-                            color: "#FFFFFF",
-                            haloColor: "#000000",
+                            color: "#000000",
+                            haloColor: "#FFFFFF",
                             haloSize: "2px",
                             font: {
                                 size: "12px",
