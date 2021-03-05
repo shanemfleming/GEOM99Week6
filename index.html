@@ -6,9 +6,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
         <link rel="stylesheet" type="text/css" href="stylesheet.css">
-
-        <!-- changed theme by referencing https://developers.arcgis.com/javascript/latest/styling/ -->
-        <link rel="stylesheet" type="text/css" href="https://js.arcgis.com/4.18/esri/themes/light-red/main.css">
+        <link rel="stylesheet" type="text/css" href="https://js.arcgis.com/4.18/esri/themes/light/main.css">
         <script src="https://js.arcgis.com/4.18/"></script>
         <script>
             require([
@@ -98,10 +96,6 @@
                     const popupProvinces = {
                         "title": "PRENAME",
                         "content": "<b>French Name:</b> {PRFNAME}",
-                        symbol: {
-                            type: "text",
-                            color: "#FFFFFF",
-                        }
                     }
 
                     // added Canada layer using https://developers.arcgis.com/javascript/latest/add-a-feature-layer/
