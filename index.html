@@ -1,0 +1,67 @@
+<!-- content pulled and altered from https://developers.arcgis.com/javascript/latest/display-a-map/ -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Map of Canada</title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+        <link rel="stylesheet" type="text/css" href="stylesheet.css">
+
+        <!-- changed theme by referencing https://developers.arcgis.com/javascript/latest/styling/ -->
+        <link rel="stylesheet" type="text/css" href="https://js.arcgis.com/4.18/esri/themes/light-red/main.css">
+        <script src="https://js.arcgis.com/4.18/"></script>
+        <script>
+            require([
+                "esri/config",
+                "esri/Map",
+                "esri/views/MapView",
+                "esri/layers/FeatureLayer"],
+                function(
+                    esriConfig,
+                    Map,
+                    MapView,
+                    FeatureLayer,)
+                {
+                    esriConfig.apiKey = "AAPKc00670d2cf6f45c785a326d46a5483b9GmyYSH0NpEuXQByjfdbj5THuYNXpwK24JU7U2xkP_jEcBLPrgRyo5agF6lxVX4sl";
+
+                    const map = new Map({
+                        basemap: "arcgis-colored-pencil" // Basemap chosen via https://developers.arcgis.com/javascript/latest/api-reference/esri-Map.html#basemap
+                    })
+
+                    // map centred on Canada
+                    const view = new MapView({
+                        map: map,
+                        center: [-98.703996, 60.742212], // Longitude, latitude
+                        zoom: 3, // Zoom level
+                        container: "viewDiv" // Div element
+                    });
+
+                    // added Canada layer using https://developers.arcgis.com/javascript/latest/add-a-feature-layer/
+                    const canadaLayer = new FeatureLayer({
+                        url: "https://utility.arcgis.com/usrsvcs/servers/15f6f56c6fe24ace8bc22c10836710b9/rest/services/Geom99lab2/ShminoCanada/MapServer/0"
+                    });
+
+                    map.add(canada, 0);
+                }
+            );
+        </script>
+    </head>
+
+    <body>
+        <div>
+            <header>
+                <h1>Learn about Canada!</h1>
+            </header>
+        </div>
+
+        <div>
+            <ul class="navbarul">
+                <li class="navbarli">
+                    <a class="navbartxt navbaract" href="index.html">Canada Map</a>
+                </li>
+            </ul>
+        </div>
+
+        <div id="viewDiv"></div>
+    </body>
+</html>
